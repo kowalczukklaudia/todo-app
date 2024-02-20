@@ -1,0 +1,86 @@
+@import "../../../../globalStyles/colors.scss";
+
+.todo-list-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    & hr { 
+        display: none;
+    }
+
+    &.completed {
+        order: 1;
+        transition: order 2.5s;
+
+
+        &>.todo-list-wrapper-item {
+            background-color: $item-done-background;
+            transition: all 0.3s ease-in-out;
+
+            & .todo-list-wrapper-item-title {
+                color: $red;
+                & hr {
+                    width: 103%;
+                    border-radius: 50%;
+                    border: 0.5px solid $red;
+                    height: 2px;
+                    color: $red;
+                    background-color: $red;
+                    position: absolute;
+                    display: block;
+                    margin-left: -1.5rem;
+                    animation: reveal 1s forwards;
+                }
+            }
+        }
+    }
+
+    &-item {  
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        position: relative;
+        max-height: max-content;
+        width: 50vh;
+        min-height: 4vh;
+        min-height: 4dvh;
+        padding: 16px;
+        margin-bottom: 8px;
+        color: $gray;
+        font-size: 19px;
+        border-radius: 5px;
+        background-color: $item-background;
+        transition: all 0.2s ease-in-out;
+
+        &-title {
+            display: flex;
+            text-align: start;
+            flex: 1;
+            flex-direction: row;
+            align-items: center;
+        }
+    }
+
+    @media screen and (max-width: 610px) {
+        & .todo-list-wrapper-item {
+            width: 45vh;
+        }
+    }
+
+    @media screen and (max-width: 519px) {
+        & .todo-list-wrapper-item {
+            width: 35vh;
+        }
+    }
+}
+
+@keyframes reveal {
+    from {
+      clip-path: inset(0 100% 0 0);
+    }
+    to {
+      clip-path: inset(0 0 0 0);
+    }
+  }
